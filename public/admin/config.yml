@@ -1,13 +1,11 @@
-# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
-# Public CMS configuration. Never store OAuth secrets or personal access tokens here.
+# Sveltia CMS — single-owner mode.
+# Only GitHub token sign-in is enabled. Never put the token in this file.
 backend:
   name: github
   repo: WindFly2909/CongTrinhSnap-Website
   branch: main
   auth_methods:
-    - oauth
-  # Replace with the deployed Sveltia CMS Authenticator Worker URL.
-  base_url: https://REPLACE-WITH-WORKER.workers.dev
+    - token
 
 media_folder: public/images/uploads
 public_folder: /images/uploads
