@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
 
 Sitemap: https://congtrinhsnap.pages.dev/sitemap-index.xml
