@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import { getCollection } from "astro:content";
+const faqs = (await getCollection("faq")).sort((a,b)=>a.data.order-b.data.order);
+---
+<BaseLayout title="Hỗ trợ | CongTrinhSnap" description="Câu hỏi thường gặp và thông tin hỗ trợ CongTrinhSnap.">
+<SiteHeader /><main id="main"><section class="page-hero"><div class="container"><span class="eyebrow">Trung tâm hỗ trợ</span><h1>Chúng tôi có thể giúp gì?</h1><p>Tìm câu trả lời cho các câu hỏi thường gặp hoặc gửi yêu cầu hỗ trợ.</p></div></section>
+<section class="section"><div class="container" style="max-width:820px"><h2>Câu hỏi thường gặp</h2>
+{faqs.length ? faqs.map(item=><details class="content-card" style="margin:12px 0"><summary><strong>{item.data.question}</strong></summary><p>{item.data.answer}</p></details>) : <div class="empty-state">Nội dung FAQ đang được cập nhật.</div>}
+<div class="content-card" style="margin-top:30px"><h2>Liên hệ hỗ trợ</h2><p class="muted">Kênh liên hệ chính thức sẽ được bổ sung sau khi chủ sở hữu xác nhận.</p><p class="muted">Không gửi mật khẩu, mã OTP hoặc dữ liệu công trình riêng tư qua biểu mẫu công khai.</p></div>
+</div></section></main><SiteFooter />
+</BaseLayout>

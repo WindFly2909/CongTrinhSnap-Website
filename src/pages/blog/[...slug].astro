@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import { getCollection,render } from "astro:content";
+export async function getStaticPaths(){const posts=await getCollection("blog",({data})=>!data.draft);return posts.map(post=>({params:{slug:post.id},props:{post}}));}
+const {post}=Astro.props; const {Content}=await render(post);
+---
+<BaseLayout title={post.data.seoTitle??`${post.data.title} | CongTrinhSnap`} description={post.data.seoDescription??post.data.description} image={post.data.thumbnail}>
+<SiteHeader /><main id="main"><section class="page-hero"><div class="container"><span class="eyebrow">{post.data.category}</span><h1>{post.data.title}</h1><p>{post.data.description}</p><span class="article-meta">{post.data.date.toLocaleDateString("vi-VN")}</span></div></section><article class="prose"><Content /></article></main><SiteFooter />
+</BaseLayout>

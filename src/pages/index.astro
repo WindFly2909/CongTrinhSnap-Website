@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+const features = [
+  ["▦","Quản lý nhiều công trình","Tập hợp thông tin từng công trình trong không gian riêng, dễ tìm và dễ theo dõi."],
+  ["▧","Ảnh và video thi công","Lưu lại quá trình thực hiện, sắp xếp tư liệu theo từng công trình."],
+  ["⌕","Bản vẽ và hồ sơ","Tập trung tài liệu liên quan để thuận tiện tra cứu khi làm việc."],
+  ["☷","Nhật ký và ghi chú","Ghi lại công việc, thông tin và các mốc quan trọng tại công trình."],
+  ["⇄","Chia sẻ nhóm","Phối hợp với thành viên được mời vào công trình."],
+  ["▤","Báo cáo PDF","Tổng hợp hình ảnh thành báo cáo để lưu trữ và chia sẻ."]
+];
+---
+<BaseLayout>
+  <SiteHeader />
+  <main id="main">
+    <section class="hero"><div class="container hero-grid">
+      <div><span class="eyebrow">Ứng dụng quản lý công trình</span><h1>Quản lý công trình <span>gọn gàng hơn.</span></h1>
+        <p class="hero-copy">Tập hợp hình ảnh, video, bản vẽ, ghi chú và báo cáo công trình trong một ứng dụng Android dễ sử dụng.</p>
+        <div class="hero-actions"><a class="button" href="/download">Khám phá ứng dụng <span>→</span></a><a class="button button-ghost" href="/features">Xem tính năng</a></div>
+        <p class="hero-note">Manage Projects. Capture Progress. Stay Organized.</p>
+      </div>
+      <div class="hero-art"><img src="/images/hero-dashboard.svg" alt="Minh họa giao diện quản lý công trình trên điện thoại" width="760" height="650" /></div>
+    </div></section>
+    <section class="section"><div class="container">
+      <div class="section-heading"><span class="eyebrow">Một nơi cho mọi tư liệu</span><h2>Nắm bắt công việc từ hiện trường đến báo cáo</h2><p>CongTrinhSnap hướng đến người làm công trình cần lưu trữ và tra cứu tư liệu rõ ràng, thuận tiện.</p></div>
+      <div class="feature-grid">{features.map(([icon,title,text]) => <article class="feature-card"><div class="feature-icon" aria-hidden="true">{icon}</div><h3>{title}</h3><p>{text}</p></article>)}</div>
+    </div></section>
+    <section class="section section-soft"><div class="container split">
+      <div><span class="eyebrow">Theo dõi dễ dàng</span><h2>Hình ảnh và hồ sơ được sắp xếp theo từng công trình</h2><p class="muted">Thay vì tìm kiếm giữa nhiều thư mục rời rạc, bạn có thể tổ chức tư liệu theo dự án và nhu cầu công việc.</p><ul class="check-list"><li>Lưu ảnh, video theo công trình</li><li>Quản lý bản vẽ và tài liệu liên quan</li><li>Ghi chú và theo dõi thông tin thực hiện</li><li>Tạo báo cáo hình ảnh PDF</li></ul><a class="button" href="/features">Tìm hiểu các tính năng</a></div>
+      <div class="content-card"><span class="eyebrow">Thiết kế cho công việc thực tế</span><h3>Từ tư liệu hiện trường đến báo cáo</h3><p class="muted">Lưu giữ tiến trình, tìm lại thông tin và chia sẻ nội dung cần thiết với nhóm làm việc.</p><div class="feature-grid" style="grid-template-columns:repeat(2,1fr)"><div class="feature-card"><div class="feature-icon">▧</div><strong>Ảnh & video</strong></div><div class="feature-card"><div class="feature-icon">▤</div><strong>Báo cáo PDF</strong></div><div class="feature-card"><div class="feature-icon">⇄</div><strong>Chia sẻ nhóm</strong></div><div class="feature-card"><div class="feature-icon">☁</div><strong>Google Drive</strong></div></div></div>
+    </div></section>
+    <section class="section"><div class="container cta"><div><h2>Bắt đầu quản lý công trình khoa học hơn</h2><p>Khám phá CongTrinhSnap và tìm hiểu cách ứng dụng phù hợp với công việc của bạn.</p></div><a class="button" href="/download">Xem cách tải ứng dụng →</a></div></section>
+  </main>
+  <SiteFooter />
+</BaseLayout>

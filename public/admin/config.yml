@@ -1,0 +1,57 @@
+# Sveltia CMS. Public configuration: never add OAuth secrets or PATs.
+backend:
+  name: github
+  repo: WindFly2909/CongTrinhSnap-Website
+  branch: main
+  auth_methods:
+    - oauth
+  base_url: https://REPLACE-WITH-WORKER.workers.dev
+media_folder: public/images/uploads
+public_folder: /images/uploads
+publish_mode: simple
+locale: vi
+collections:
+  - name: blog
+    label: Bài viết
+    folder: src/content/blog
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Tiêu đề, name: title, widget: string }
+      - { label: Mô tả, name: description, widget: text }
+      - { label: Ngày đăng, name: date, widget: datetime, format: "YYYY-MM-DD" }
+      - { label: Danh mục, name: category, widget: string, default: "Kiến thức" }
+      - { label: Ảnh đại diện, name: thumbnail, widget: image, required: false }
+      - { label: Bản nháp, name: draft, widget: boolean, default: true }
+      - { label: Thẻ, name: tags, widget: list, required: false }
+      - { label: Tiêu đề SEO, name: seoTitle, widget: string, required: false }
+      - { label: Mô tả SEO, name: seoDescription, widget: text, required: false }
+      - { label: Nội dung, name: body, widget: markdown }
+  - name: guides
+    label: Hướng dẫn
+    folder: src/content/guides
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Tiêu đề, name: title, widget: string }
+      - { label: Mô tả, name: description, widget: text }
+      - { label: Thứ tự, name: order, widget: number, default: 100 }
+      - { label: Danh mục, name: category, widget: string, default: "Bắt đầu" }
+      - { label: Bản nháp, name: draft, widget: boolean, default: true }
+      - { label: Nội dung, name: body, widget: markdown }
+  - name: faq
+    label: Câu hỏi thường gặp
+    folder: src/content/faq
+    create: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    fields:
+      - { label: Câu hỏi, name: question, widget: string }
+      - { label: Trả lời, name: answer, widget: text }
+      - { label: Danh mục, name: category, widget: string, default: "Chung" }
+      - { label: Thứ tự, name: order, widget: number, default: 100 }

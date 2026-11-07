@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import { getCollection } from "astro:content";
+const posts=(await getCollection("blog",({data})=>!data.draft)).sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf());
+---
+<BaseLayout title="Blog | CongTrinhSnap" description="Kiến thức quản lý công trình, lưu trữ hồ sơ và cập nhật CongTrinhSnap.">
+<SiteHeader /><main id="main"><section class="page-hero"><div class="container"><span class="eyebrow">Blog CongTrinhSnap</span><h1>Kiến thức và kinh nghiệm</h1><p>Chia sẻ cách tổ chức hình ảnh, hồ sơ và thông tin trong công việc công trình.</p></div></section>
+<section class="section"><div class="container card-grid">{posts.length ? posts.map(post=><a class="content-card" href={`/blog/${post.id}`}>{post.data.thumbnail&&<img src={post.data.thumbnail} alt="" loading="lazy" />}<span class="article-meta">{post.data.date.toLocaleDateString("vi-VN")} · {post.data.category}</span><h2>{post.data.title}</h2><p>{post.data.description}</p></a>) : <div class="empty-state">Bài viết đang được chuẩn bị. Nội dung mới sẽ được cập nhật tại đây.</div>}</div></section></main><SiteFooter />
+</BaseLayout>

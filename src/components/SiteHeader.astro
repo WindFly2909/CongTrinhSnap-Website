@@ -1,0 +1,23 @@
+---
+const links = [
+  { href: "/", label: "Trang chủ" },
+  { href: "/features", label: "Tính năng" },
+  { href: "/guides", label: "Hướng dẫn" },
+  { href: "/blog", label: "Blog" },
+  { href: "/pricing", label: "Free & Pro" },
+  { href: "/support", label: "Hỗ trợ" }
+];
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="/" aria-label="CongTrinhSnap – Trang chủ">
+      <img src="/favicon.svg" alt="" width="38" height="38" />
+      <span>CongTrinh<span class="brand-accent">Snap</span></span>
+    </a>
+    <nav aria-label="Điều hướng chính">
+      {links.map((link) => <a class:list={["nav-link", path === link.href ? "active" : ""]} href={link.href}>{link.label}</a>)}
+    </nav>
+    <a class="button button-small" href="/download">Tải ứng dụng <span aria-hidden="true">↗</span></a>
+  </div>
+</header>

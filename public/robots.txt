@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://congtrinhsnap.pages.dev/sitemap-index.xml

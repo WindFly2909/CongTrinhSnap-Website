@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+const features = [
+["Quản lý công trình","Tạo và tổ chức nhiều công trình, tập trung thông tin theo từng dự án."],
+["Ảnh và video","Lưu trữ hình ảnh, video thi công gắn với công trình tương ứng."],
+["Bản vẽ và tài liệu","Mở tài liệu bằng ứng dụng phù hợp trên thiết bị, hỗ trợ quy trình tra cứu hồ sơ."],
+["Ghi chú và nhật ký","Ghi lại nội dung công việc và các thông tin cần theo dõi."],
+["Chia sẻ nhóm","Mời thành viên tham gia và phân quyền làm việc theo công trình."],
+["Google Drive","Hỗ trợ quy trình sao lưu và đồng bộ dựa trên tài khoản Drive đã kết nối."],
+["Báo cáo PDF","Tổng hợp hình ảnh thành báo cáo để lưu trữ, gửi và in."],
+["Free và Pro","Các gói sử dụng có giới hạn và quyền lợi khác nhau theo phiên bản ứng dụng."]
+];
+---
+<BaseLayout title="Tính năng | CongTrinhSnap" description="Khám phá các tính năng quản lý công trình, ảnh, video, hồ sơ, chia sẻ nhóm và báo cáo PDF của CongTrinhSnap.">
+<SiteHeader /><main id="main"><section class="page-hero"><div class="container"><span class="eyebrow">Tính năng</span><h1>Công cụ cho công việc công trình</h1><p>Khám phá các nhóm tính năng hỗ trợ tổ chức tư liệu, phối hợp và tổng hợp thông tin.</p></div></section>
+<section class="section"><div class="container card-grid">{features.map(([title,text])=><article class="content-card"><h2>{title}</h2><p>{text}</p></article>)}</div></section></main><SiteFooter />
+</BaseLayout>
