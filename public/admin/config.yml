@@ -1,15 +1,19 @@
-# Sveltia CMS. Public configuration: never add OAuth secrets or PATs.
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+# Public CMS configuration. Never store OAuth secrets or personal access tokens here.
 backend:
   name: github
   repo: WindFly2909/CongTrinhSnap-Website
   branch: main
   auth_methods:
     - oauth
+  # Replace with the deployed Sveltia CMS Authenticator Worker URL.
   base_url: https://REPLACE-WITH-WORKER.workers.dev
+
 media_folder: public/images/uploads
 public_folder: /images/uploads
 publish_mode: simple
 locale: vi
+
 collections:
   - name: blog
     label: Bài viết
@@ -29,6 +33,7 @@ collections:
       - { label: Tiêu đề SEO, name: seoTitle, widget: string, required: false }
       - { label: Mô tả SEO, name: seoDescription, widget: text, required: false }
       - { label: Nội dung, name: body, widget: markdown }
+
   - name: guides
     label: Hướng dẫn
     folder: src/content/guides
@@ -43,6 +48,7 @@ collections:
       - { label: Danh mục, name: category, widget: string, default: "Bắt đầu" }
       - { label: Bản nháp, name: draft, widget: boolean, default: true }
       - { label: Nội dung, name: body, widget: markdown }
+
   - name: faq
     label: Câu hỏi thường gặp
     folder: src/content/faq
@@ -55,3 +61,14 @@ collections:
       - { label: Trả lời, name: answer, widget: text }
       - { label: Danh mục, name: category, widget: string, default: "Chung" }
       - { label: Thứ tự, name: order, widget: number, default: 100 }
+
+  - name: site
+    label: Nội dung website
+    files:
+      - name: homepage
+        label: Trang chủ
+        file: src/content/site/homepage.json
+        fields:
+          - { label: Tiêu đề chính, name: title, widget: string }
+          - { label: Mô tả, name: description, widget: text }
+          - { label: Slogan, name: slogan, widget: string }
