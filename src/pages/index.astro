@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import home from "../content/site/homepage.json";
 const features = [
   ["▦","Quản lý nhiều công trình","Tập hợp thông tin từng công trình trong không gian riêng, dễ tìm và dễ theo dõi."],
   ["▧","Ảnh và video thi công","Lưu lại quá trình thực hiện, sắp xếp tư liệu theo từng công trình."],
@@ -11,14 +12,14 @@ const features = [
   ["▤","Báo cáo PDF","Tổng hợp hình ảnh thành báo cáo để lưu trữ và chia sẻ."]
 ];
 ---
-<BaseLayout>
+<BaseLayout title={`CongTrinhSnap – ${home.title}`} description={home.description}>
   <SiteHeader />
   <main id="main">
     <section class="hero"><div class="container hero-grid">
-      <div><span class="eyebrow">Ứng dụng quản lý công trình</span><h1>Quản lý công trình <span>gọn gàng hơn.</span></h1>
-        <p class="hero-copy">Tập hợp hình ảnh, video, bản vẽ, ghi chú và báo cáo công trình trong một ứng dụng Android dễ sử dụng.</p>
+      <div><span class="eyebrow">Ứng dụng quản lý công trình</span><h1>{home.title}</h1>
+        <p class="hero-copy">{home.description}</p>
         <div class="hero-actions"><a class="button" href="/download">Khám phá ứng dụng <span>→</span></a><a class="button button-ghost" href="/features">Xem tính năng</a></div>
-        <p class="hero-note">Manage Projects. Capture Progress. Stay Organized.</p>
+        <p class="hero-note">{home.slogan}</p>
       </div>
       <div class="hero-art"><img src="/images/hero-dashboard.svg" alt="Minh họa giao diện quản lý công trình trên điện thoại" width="760" height="650" /></div>
     </div></section>
