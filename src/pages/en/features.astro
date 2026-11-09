@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+const features = [
+["Project management","Create and organize multiple construction projects, keeping information grouped by project."],
+["Photos and videos","Store construction photos and videos with the relevant project."],
+["Drawings and documents","Open files with compatible apps on your device and keep project documents organized."],
+["Notes and work logs","Record work updates and information that needs follow-up."],
+["Team sharing","Invite members and assign project-level roles."],
+["Google Drive","Use connected Drive accounts for supported backup and synchronization workflows."],
+["PDF reports","Compile photos into reports for storage, sharing and printing."],
+["Free and Pro plans","Choose from usage limits and benefits available in the current app version."]
+];
+---
+<BaseLayout lang="en" title="Features | CongTrinhSnap" description="Explore CongTrinhSnap features for construction projects, photos, videos, documents, team sharing and PDF reports.">
+<SiteHeader /><main id="main><section class="page-hero"><div class="container"><span class="eyebrow">Features</span><h1>Tools for construction work</h1><p>Explore features that help organize project records, collaborate and bring information together.</p></div></section>
+<section class="section"><div class="container card-grid">{features.map(([title,description])=><article class="content-card"><h2>{title}</h2><p>{description}</p></article>)}</div></section></main><SiteFooter />
+</BaseLayout>
