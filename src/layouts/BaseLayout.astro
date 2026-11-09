@@ -13,7 +13,7 @@ const vietnamesePath = Astro.url.pathname.replace(/^\/en(?=\/|$)/, "") || "/";
 const englishPath = `/en${vietnamesePath === "/" ? "" : vietnamesePath}`;
 const viUrl = new URL(vietnamesePath, Astro.site).toString();
 const enUrl = new URL(englishPath, Astro.site).toString();
-const hasEnglishVersion = ["/", "/features", "/pricing", "/support", "/download", "/privacy", "/terms", "/delete-account"].includes(vietnamesePath);
+const hasEnglishVersion = ["/", "/features", "/pricing", "/support", "/download", "/privacy", "/terms", "/delete-account", "/blog", "/guides"].includes(vietnamesePath);
 ---
 <!doctype html>
 <html lang={lang}>
