@@ -18,8 +18,8 @@ const links = isEnglish ? [
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 const viPath = path.replace(/^\/en(?=\/|$)/, "") || "/";
 const enPath = `/en${viPath === "/" ? "" : viPath}`;
-const viTarget = ["/", "/features", "/pricing", "/support", "/download", "/privacy", "/terms", "/delete-account", "/blog", "/guides"].includes(viPath) || viPath.startsWith("/blog/") || viPath.startsWith("/guides/") ? viPath : "/";
-const enTarget = ["/en", "/en/features", "/en/pricing", "/en/support", "/en/download", "/en/privacy", "/en/terms", "/en/delete-account", "/en/blog", "/en/guides"].includes(enPath) || enPath.startsWith("/en/blog/") || enPath.startsWith("/en/guides/") ? enPath : "/en";
+const viTarget = ["/", "/features", "/pricing", "/support", "/download", "/privacy", "/terms", "/delete-account", "/blog", "/guides"].includes(viPath) ? viPath : (viPath.startsWith("/blog/") ? "/blog" : viPath.startsWith("/guides/") ? "/guides" : "/");
+const enTarget = ["/en", "/en/features", "/en/pricing", "/en/support", "/en/download", "/en/privacy", "/en/terms", "/en/delete-account", "/en/blog", "/en/guides"].includes(enPath) ? enPath : (enPath.startsWith("/en/blog/") ? "/en/blog" : enPath.startsWith("/en/guides/") ? "/en/guides" : "/en");
 ---
 <header class="site-header">
   <div class="container nav-wrap">
