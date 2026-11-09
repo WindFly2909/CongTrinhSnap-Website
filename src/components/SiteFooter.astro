@@ -1,19 +1,20 @@
 ---
 import { legal } from "../data/legal";
 const year = new Date().getFullYear();
+const isEnglish = Astro.url.pathname === "/en" || Astro.url.pathname.startsWith("/en/");
 ---
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <a class="brand footer-brand" href="/">
+      <a class="brand footer-brand" href={isEnglish ? "/en" : "/"}>
         <img src="/favicon.svg" alt="" width="34" height="34" />
         <span>CongTrinh<span class="brand-accent">Snap</span></span>
       </a>
-      <p class="muted footer-intro">Quản lý công trình gọn gàng hơn. Lưu giữ hình ảnh, hồ sơ và tiến độ trong một nơi.</p>
+      <p class="muted footer-intro">{isEnglish ? "Keep construction photos, documents and project progress organized in one place." : "Quản lý công trình gọn gàng hơn. Lưu giữ hình ảnh, hồ sơ và tiến độ trong một nơi."}</p>
     </div>
-    <div><strong>Sản phẩm</strong><a href="/features">Tính năng</a><a href="/pricing">Free & Pro</a><a href="/download">Tải ứng dụng</a></div>
-    <div><strong>Tài nguyên</strong><a href="/guides">Hướng dẫn</a><a href="/blog">Blog</a><a href="/support">Hỗ trợ</a></div>
-    <div><strong>Thông tin</strong><a href="/privacy">Quyền riêng tư</a><a href="/terms">Điều khoản</a><a href="/delete-account">Xóa tài khoản</a><a href={`mailto:${legal.supportEmail}`}>{legal.supportEmail}</a></div>
+    <div><strong>{isEnglish ? "Product" : "Sản phẩm"}</strong><a href={isEnglish ? "/en/features" : "/features"}>{isEnglish ? "Features" : "Tính năng"}</a><a href={isEnglish ? "/en/pricing" : "/pricing"}>Free & Pro</a><a href={isEnglish ? "/en/download" : "/download"}>{isEnglish ? "Get the app" : "Tải ứng dụng"}</a></div>
+    <div><strong>{isEnglish ? "Help" : "Hỗ trợ"}</strong><a href={isEnglish ? "/en/support" : "/support"}>{isEnglish ? "Support center" : "Trung tâm hỗ trợ"}</a><a href={isEnglish ? "/en/delete-account" : "/delete-account"}>{isEnglish ? "Delete account" : "Xóa tài khoản"}</a></div>
+    <div><strong>{isEnglish ? "Legal" : "Thông tin"}</strong><a href={isEnglish ? "/en/privacy" : "/privacy"}>{isEnglish ? "Privacy policy" : "Quyền riêng tư"}</a><a href={isEnglish ? "/en/terms" : "/terms"}>{isEnglish ? "Terms of service" : "Điều khoản"}</a><a href={`mailto:${legal.supportEmail}`}>{legal.supportEmail}</a></div>
   </div>
   <div class="container footer-bottom">
     <span>© {year} {legal.legalName} · {legal.brandName}. CongTrinhSnap.</span>
