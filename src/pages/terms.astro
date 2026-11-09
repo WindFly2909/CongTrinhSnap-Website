@@ -1,7 +1,90 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro"; import SiteHeader from "../components/SiteHeader.astro"; import SiteFooter from "../components/SiteFooter.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import { legal } from "../data/legal";
 ---
-<BaseLayout title="Điều khoản sử dụng | CongTrinhSnap" description="Điều khoản truy cập và sử dụng website CongTrinhSnap.">
-<SiteHeader /><main id="main"><section class="page-hero"><div class="container"><span class="eyebrow">Pháp lý</span><h1>Điều khoản sử dụng</h1><p>Bản dự thảo cần được rà soát trước khi áp dụng.</p></div></section>
-<article class="prose"><p>Khi truy cập website CongTrinhSnap, bạn đồng ý sử dụng nội dung với mục đích tìm hiểu sản phẩm và tài liệu hướng dẫn.</p><h2>Thông tin sản phẩm</h2><p>Tính năng, giới hạn, khả năng tương thích và điều kiện sử dụng có thể thay đổi theo phiên bản. Người dùng nên tham khảo thông tin trong ứng dụng và thông báo phát hành.</p><h2>Liên kết ngoài</h2><p>Website có thể dẫn đến dịch vụ của bên thứ ba. Việc sử dụng các dịch vụ đó tuân theo điều khoản riêng của nhà cung cấp.</p><h2>Liên hệ</h2><p>Thông tin liên hệ chính thức sẽ được bổ sung trước khi công bố.</p></article></main><SiteFooter />
+<BaseLayout title="Điều khoản sử dụng | CongTrinhSnap" description={`Điều khoản sử dụng ứng dụng ${legal.appName} và website.`}>
+<SiteHeader />
+<main id="main">
+<section class="page-hero"><div class="container"><span class="eyebrow">Pháp lý</span><h1>Điều khoản sử dụng</h1><p>Có hiệu lực từ ngày {legal.effectiveDate}.</p></div></section>
+<article class="prose">
+<h2>1. Chấp nhận điều khoản</h2>
+<p>Điều khoản này áp dụng khi bạn tải, cài đặt hoặc sử dụng ứng dụng <strong>{legal.appName}</strong> (“Ứng dụng”) và website <a href={legal.siteUrl}>{legal.siteUrl.replace("https://", "")}</a>. Khi sử dụng, bạn xác nhận đã có cơ hội đọc Điều khoản và <a href="/privacy">Chính sách quyền riêng tư</a>. Nếu không đồng ý, vui lòng ngừng sử dụng.</p>
+
+<h2>2. Bên cung cấp</h2>
+<p>Ứng dụng do <strong>{legal.legalName}</strong>, cá nhân vận hành dưới thương hiệu <strong>{legal.brandName}</strong>, phát triển và cung cấp. DoS Studio là thương hiệu, không phải pháp nhân độc lập. Liên hệ: <a href={`mailto:${legal.supportEmail}`}>${legal.supportEmail}</a>.</p>
+
+<h2>3. Tài khoản</h2>
+<ul>
+<li>Một số chức năng có thể sử dụng không cần đăng nhập. Đồng bộ, chia sẻ và gói Pro yêu cầu đăng nhập Google theo mô tả trong ứng dụng.</li>
+<li>Bạn có trách nhiệm bảo vệ thiết bị, tài khoản Google và hoạt động phát sinh từ tài khoản của mình.</li>
+<li>Bạn có thể yêu cầu xóa tài khoản theo hướng dẫn tại <a href="/delete-account">Xóa tài khoản và dữ liệu</a>.</li>
+</ul>
+
+<h2>4. Gói Free và Pro</h2>
+<ul>
+<li><strong>Free:</strong> sử dụng miễn phí với giới hạn tính năng/số lượng theo thông tin trong ứng dụng và có thể hiển thị quảng cáo.</li>
+<li><strong>Pro:</strong> thuê bao trả phí, bỏ quảng cáo và mở rộng giới hạn theo mô tả tại ứng dụng và trang <a href="/pricing">Free &amp; Pro</a>. Giới hạn thiết bị được thông báo trước khi mua.</li>
+<li>Giá, chu kỳ thanh toán, quyền lợi và điều kiện áp dụng được hiển thị trên Google Play hoặc trong ứng dụng trước khi xác nhận mua.</li>
+<li>Quyền Pro cấp theo chương trình riêng có thể có thời hạn và điều kiện riêng được thông báo khi cấp.</li>
+</ul>
+
+<h2>5. Thanh toán, gia hạn, hủy và hoàn tiền</h2>
+<ul>
+<li>Google Play xử lý thanh toán và lưu thông tin thanh toán theo chính sách riêng của Google.</li>
+<li>Nếu là thuê bao tự động gia hạn, khoản phí sẽ được thu theo chu kỳ hiển thị tại thời điểm mua cho đến khi bạn hủy theo quy trình Google Play.</li>
+<li>Gỡ ứng dụng hoặc xóa tài khoản CongTrinhSnap không tự hủy thuê bao. Bạn có thể quản lý/hủy tại <a href={legal.playSubscriptionsUrl} rel="noopener noreferrer">trang quản lý thuê bao Google Play</a>.</li>
+<li>Yêu cầu hoàn tiền tuân theo chính sách Google Play, xem <a href="https://support.google.com/googleplay/answer/2479637" rel="noopener noreferrer">hướng dẫn hoàn tiền Google Play</a>. Bạn có thể liên hệ chúng tôi để được hướng dẫn, nhưng quyết định hoàn tiền thuộc quy trình và thẩm quyền tương ứng của Google Play theo chính sách áp dụng.</li>
+</ul>
+
+<h2>6. Nội dung của bạn</h2>
+<ul>
+<li>Ảnh, video, bản vẽ, tài liệu, ghi chú và thông tin công trình do bạn tạo hoặc tải lên (“Nội dung”) thuộc quyền của bạn hoặc chủ sở hữu hợp pháp.</li>
+<li>Bạn cho phép chúng tôi xử lý, lưu trữ, mã hóa, đồng bộ và hiển thị Nội dung trong phạm vi cần thiết để cung cấp chức năng bạn yêu cầu và chia sẻ với người bạn chọn.</li>
+<li>Bạn cam kết có quyền sử dụng và chia sẻ Nội dung; không tải lên dữ liệu trái pháp luật, xâm phạm quyền của người khác hoặc không có thẩm quyền tiết lộ.</li>
+<li>Bạn chịu trách nhiệm về tính chính xác, quyền sử dụng và việc sao lưu Nội dung của mình.</li>
+</ul>
+
+<h2>7. Chia sẻ công trình</h2>
+<ul>
+<li>Chủ công trình quản lý lời mời và vai trò thành viên. Người được mời có thể xem hoặc thao tác dữ liệu theo vai trò được cấp.</li>
+<li>Tệp công trình có thể được lưu trong Google Drive của người tải tệp lên. Nếu người đó xóa tệp/thư mục, thu hồi quyền truy cập, xóa tài khoản Google hoặc gặp giới hạn dung lượng, các thành viên khác có thể không còn xem được tệp.</li>
+<li>Khi Chủ xóa công trình hoặc xóa tài khoản, quyền truy cập của các thành viên khác có thể bị chấm dứt theo cơ chế ứng dụng. Hãy xuất hoặc sao lưu dữ liệu cần thiết trước khi thực hiện.</li>
+</ul>
+
+<h2>8. Sao lưu và mất dữ liệu</h2>
+<p>Dữ liệu chỉ lưu trên thiết bị có thể mất khi thiết bị hỏng/mất, gỡ ứng dụng hoặc xóa dữ liệu ứng dụng. Chúng tôi khuyến nghị đồng bộ và định kỳ xuất bản sao lưu. Trong phạm vi pháp luật cho phép, chúng tôi không chịu trách nhiệm đối với mất mát phát sinh từ việc bạn không sao lưu, thao tác xóa do bạn/người có quyền thực hiện, lỗi thiết bị/mạng hoặc sự cố của nhà cung cấp bên thứ ba ngoài khả năng kiểm soát hợp lý. Điều khoản này không loại trừ trách nhiệm bắt buộc theo pháp luật.</p>
+
+<h2>9. Hành vi không được phép</h2>
+<ul>
+<li>Sử dụng ứng dụng cho mục đích trái pháp luật hoặc lưu trữ/chia sẻ nội dung xâm phạm quyền của người khác.</li>
+<li>Can thiệp, dò quét, vượt cơ chế bảo mật hoặc giới hạn; khai thác lỗ hổng hoặc truy cập trái phép dữ liệu.</li>
+<li>Sử dụng ứng dụng để gửi thư rác, lời mời hàng loạt hoặc gây ảnh hưởng tới hệ thống/người dùng khác.</li>
+<li>Sửa đổi để vượt qua thanh toán hoặc mở khóa Pro trái phép; sao chép, dịch ngược hoặc bán lại trái pháp luật, trừ quyền được pháp luật hoặc giấy phép mã nguồn mở cho phép.</li>
+</ul>
+
+<h2>10. Dịch vụ bên thứ ba và tính năng AI</h2>
+<p>Ứng dụng sử dụng hoặc liên kết tới dịch vụ của Google (Đăng nhập, Drive, Firebase, Play), Appodeal và các mạng quảng cáo, ứng dụng ChatGPT của OpenAI khi bạn chủ động chọn “Hỏi AI”, cùng trang chuyển đổi DWG. Dịch vụ bên thứ ba chịu điều khoản và chính sách riêng. Khi bạn chủ động chuyển dữ liệu sang dịch vụ bên thứ ba, việc xử lý tiếp theo do nhà cung cấp đó thực hiện theo chính sách của họ. Nội dung AI chỉ mang tính tham khảo, có thể sai hoặc thiếu và không thay thế tư vấn của kỹ sư, kiến trúc sư, luật sư hoặc chuyên gia có thẩm quyền.</p>
+
+<h2>11. Sở hữu trí tuệ</h2>
+<p>Ứng dụng, mã nguồn do chúng tôi sở hữu, giao diện, tên và biểu tượng CongTrinhSnap thuộc quyền của chủ sở hữu tương ứng, bao gồm <strong>{legal.legalName}</strong> trong phạm vi quyền hợp pháp. Các thành phần mã nguồn mở và tài sản của bên thứ ba tuân theo giấy phép/quyền của chủ sở hữu tương ứng. Điều khoản này không chuyển quyền sở hữu Nội dung của bạn cho chúng tôi.</p>
+
+<h2>12. Tạm ngưng và chấm dứt</h2>
+<p>Chúng tôi có thể tạm ngưng hoặc chấm dứt quyền truy cập khi có căn cứ hợp lý về vi phạm Điều khoản, nguy cơ an toàn, yêu cầu pháp luật hoặc hành vi gây hại. Trừ trường hợp cần hành động ngay để ngăn chặn thiệt hại hoặc pháp luật yêu cầu khác, chúng tôi sẽ thông báo và tạo cơ hội khắc phục phù hợp. Bạn có thể ngừng sử dụng và yêu cầu xóa tài khoản bất cứ lúc nào.</p>
+
+<h2>13. Giới hạn trách nhiệm</h2>
+<p>Ứng dụng được cung cấp theo tình trạng và tính năng được công bố tại thời điểm sử dụng; chúng tôi nỗ lực duy trì hoạt động ổn định nhưng không bảo đảm dịch vụ không gián đoạn hoặc không có lỗi. Trong phạm vi pháp luật cho phép, chúng tôi không chịu trách nhiệm về thiệt hại gián tiếp không thể dự liệu hợp lý hoặc sự cố hoàn toàn do bên thứ ba ngoài khả năng kiểm soát. Không nội dung nào trong Điều khoản này loại trừ hoặc hạn chế quyền bắt buộc của người tiêu dùng, trách nhiệm do lỗi cố ý, hoặc trách nhiệm mà pháp luật không cho phép loại trừ.</p>
+
+<h2>14. Thay đổi điều khoản</h2>
+<p>Chúng tôi có thể cập nhật Điều khoản để phản ánh thay đổi dịch vụ hoặc pháp luật. Bản mới được đăng tại trang này kèm ngày hiệu lực; thay đổi quan trọng sẽ được thông báo bằng phương thức phù hợp trước khi áp dụng trong phạm vi pháp luật yêu cầu.</p>
+
+<h2>15. Luật áp dụng và giải quyết tranh chấp</h2>
+<p>Điều khoản được điều chỉnh bởi pháp luật Việt Nam. Các bên ưu tiên trao đổi, thương lượng qua email hỗ trợ. Nếu không giải quyết được, tranh chấp được đưa tới cơ quan có thẩm quyền theo quy định pháp luật; điều khoản này không hạn chế quyền khiếu nại/khởi kiện của người tiêu dùng.</p>
+
+<h2>16. Liên hệ</h2>
+<p><strong>{legal.legalName}</strong> – thương hiệu <strong>{legal.brandName}</strong><br />Email: <a href={`mailto:${legal.supportEmail}`}>${legal.supportEmail}</a></p>
+</article>
+</main>
+<SiteFooter />
 </BaseLayout>
