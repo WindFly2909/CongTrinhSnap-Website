@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
+import SiteFooter from "../../../components/SiteFooter.astro";
+import { getCollection } from "astro:content";
+const posts=(await getCollection("blogEn",({data})=>!data.draft)).sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf());
+---
+<BaseLayout lang="en" title="Blog | CongTrinhSnap" description="Construction project management insights, practical tips and product updates.">
+<SiteHeader /><main id="main"><section class="page-hero"><div class="container"><span class="eyebrow">CongTrinhSnap Blog</span><h1>Insights and practical tips</h1><p>Ideas for organizing project photos, documents and construction records.</p></div></section>
+<section class="section"><div class="container card-grid">{posts.length?posts.map(post=><a class="content-card" href={`/en/blog/${post.id}`}>{post.data.thumbnail&&<img src={post.data.thumbnail} alt="" loading="lazy"/>}<span class="article-meta">{post.data.date.toLocaleDateString("en-US")} · {post.data.category}</span><h2>{post.data.title}</h2><p>{post.data.description}</p></a>):<div class="empty-state">English articles are being prepared. Please check back for updates.</div>}</div></section></main><SiteFooter />
+</BaseLayout>
