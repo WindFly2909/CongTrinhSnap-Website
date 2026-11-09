@@ -1,5 +1,13 @@
 ---
-const links = [
+const isEnglish = Astro.url.pathname === "/en" || Astro.url.pathname.startsWith("/en/");
+const links = isEnglish ? [
+  { href: "/en", label: "Home" },
+  { href: "/en/features", label: "Features" },
+  { href: "/en/guides", label: "Guides" },
+  { href: "/en/blog", label: "Blog" },
+  { href: "/en/pricing", label: "Free & Pro" },
+  { href: "/en/support", label: "Support" }
+] : [
   { href: "/", label: "Trang chủ" },
   { href: "/features", label: "Tính năng" },
   { href: "/guides", label: "Hướng dẫn" },
@@ -8,16 +16,27 @@ const links = [
   { href: "/support", label: "Hỗ trợ" }
 ];
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const viPath = path.replace(/^\/en(?=\/|$)/, "") || "/";
+const enPath = `/en${viPath === "/" ? "" : viPath}`;
+const viTarget = ["/", "/features", "/pricing", "/support", "/download", "/privacy", "/terms", "/delete-account", "/blog", "/guides"].includes(viPath) ? viPath : (viPath.startsWith("/blog/") ? "/blog" : viPath.startsWith("/guides/") ? "/guides" : "/");
+const enTarget = ["/en", "/en/features", "/en/pricing", "/en/support", "/en/download", "/en/privacy", "/en/terms", "/en/delete-account", "/en/blog", "/en/guides"].includes(enPath) ? enPath : (enPath.startsWith("/en/blog/") ? "/en/blog" : enPath.startsWith("/en/guides/") ? "/en/guides" : "/en");
 ---
 <header class="site-header">
   <div class="container nav-wrap">
-    <a class="brand" href="/" aria-label="CongTrinhSnap – Trang chủ">
+    <a class="brand" href={isEnglish ? "/en" : "/"} aria-label={`CongTrinhSnap – ${isEnglish ? "Home" : "Trang chủ"}`}>
       <img src="/favicon.svg" alt="" width="38" height="38" />
       <span>CongTrinh<span class="brand-accent">Snap</span></span>
     </a>
-    <nav aria-label="Điều hướng chính">
+    <nav aria-label={isEnglish ? "Main navigation" : "Điều hướng chính"}>
       {links.map((link) => <a class:list={["nav-link", path === link.href ? "active" : ""]} href={link.href}>{link.label}</a>)}
     </nav>
-    <a class="button button-small" href="/download">Tải ứng dụng <span aria-hidden="true">↗</span></a>
+    <div class="header-actions">
+      <div class="language-switch" aria-label={isEnglish ? "Choose language" : "Chọn ngôn ngữ"}>
+        <a href={viTarget} lang="vi" aria-current={!isEnglish ? "page" : undefined}>VI</a>
+        <span aria-hidden="true">|</span>
+        <a href={enTarget} lang="en" aria-current={isEnglish ? "page" : undefined}>EN</a>
+      </div>
+      <a class="button button-small" href={isEnglish ? "/en/download" : "/download"}>{isEnglish ? "Get the app" : "Tải ứng dụng"} <span aria-hidden="true">↗</span></a>
+    </div>
   </div>
 </header>

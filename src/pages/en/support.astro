@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import { legal } from "../../data/legal";
+import { getCollection } from "astro:content";
+const faqs = (await getCollection("faq")).sort((a,b)=>a.data.order-b.data.order);
+---
+<BaseLayout lang="en" title="Support | CongTrinhSnap" description="Contact and support information for CongTrinhSnap.">
+<SiteHeader /><main id="main"><section class="page-hero"><div class="container"><span class="eyebrow">Help center</span><h1>How can we help?</h1><p>Support for CongTrinhSnap, operated by {legal.legalName} under the DoS Studio brand.</p></div></section>
+<section class="section"><div class="container" style="max-width:820px"><h2>Frequently asked questions</h2>{faqs.length?faqs.map(item=><details class="content-card" style="margin:12px 0"><summary><strong>{item.data.questionEn??item.data.question}</strong></summary><p>{item.data.answerEn??item.data.answer}</p></details>):<div class="empty-state">FAQs are being updated.</div>}<div class="content-card" style="margin-top:30px"><h2>Contact support</h2><p>Email: <a href={`mailto:${legal.supportEmail}`}><strong>{legal.supportEmail}</strong></a></p><p class="muted">When contacting support, describe the issue and include your device model and app version. Do not send passwords, one-time codes, full payment details or sensitive project data unless strictly necessary.</p><p class="muted">Operator: {legal.legalName}, using the DoS Studio brand.</p></div>
+<div class="content-card" style="margin-top:18px"><h2>Account and Pro plan</h2><ul><li><a href="/en/delete-account">Delete your account and data</a></li><li><a href={legal.playSubscriptionsUrl} rel="noopener noreferrer">Manage or cancel a Google Play subscription</a></li><li><a href="https://support.google.com/googleplay/answer/2479637" rel="noopener noreferrer">Google Play refund information</a></li><li><a href="/en/privacy">Privacy policy</a> · <a href="/en/terms">Terms of service</a></li></ul></div></div></section></main><SiteFooter />
+</BaseLayout>

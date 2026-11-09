@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
+import SiteFooter from "../../../components/SiteFooter.astro";
+import { getCollection } from "astro:content";
+const guides=(await getCollection("guidesEn",({data})=>!data.draft)).sort((a,b)=>a.data.order-b.data.order);
+---
+<BaseLayout lang="en" title="User guides | CongTrinhSnap" description="Step-by-step guides for using CongTrinhSnap.">
+<SiteHeader/><main id="main"><section class="page-hero"><div class="container"><span class="eyebrow">Help and learning</span><h1>CongTrinhSnap user guides</h1><p>Practical instructions to help you get started and use the app effectively.</p></div></section>
+<section class="section"><div class="container card-grid">{guides.length?guides.map(guide=><a class="content-card" href={`/en/guides/${guide.id}`}><span class="eyebrow">{guide.data.category}</span><h2>{guide.data.title}</h2><p>{guide.data.description}</p></a>):<div class="empty-state">English user guides are being prepared. Please check back soon.</div>}</div></section></main><SiteFooter/>
+</BaseLayout>
