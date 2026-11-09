@@ -13,11 +13,8 @@ const isEnglish = Astro.url.pathname === "/en" || Astro.url.pathname.startsWith(
       <p class="muted footer-intro">{isEnglish ? "Keep construction photos, documents and project progress organized in one place." : "Quản lý công trình gọn gàng hơn. Lưu giữ hình ảnh, hồ sơ và tiến độ trong một nơi."}</p>
     </div>
     <div><strong>{isEnglish ? "Product" : "Sản phẩm"}</strong><a href={isEnglish ? "/en/features" : "/features"}>{isEnglish ? "Features" : "Tính năng"}</a><a href={isEnglish ? "/en/pricing" : "/pricing"}>Free & Pro</a><a href={isEnglish ? "/en/download" : "/download"}>{isEnglish ? "Get the app" : "Tải ứng dụng"}</a></div>
-    <div><strong>{isEnglish ? "Help" : "Hỗ trợ"}</strong><a href={isEnglish ? "/en/support" : "/support"}>{isEnglish ? "Support center" : "Trung tâm hỗ trợ"}</a><a href={isEnglish ? "/en/delete-account" : "/delete-account"}>{isEnglish ? "Delete account" : "Xóa tài khoản"}</a></div>
-    <div><strong>{isEnglish ? "Legal" : "Thông tin"}</strong><a href={isEnglish ? "/en/privacy" : "/privacy"}>{isEnglish ? "Privacy policy" : "Quyền riêng tư"}</a><a href={isEnglish ? "/en/terms" : "/terms"}>{isEnglish ? "Terms of service" : "Điều khoản"}</a><a href={`mailto:${legal.supportEmail}`}>{legal.supportEmail}</a></div>
+    <div><strong>{isEnglish ? "Explore" : "Khám phá"}</strong><a href={isEnglish ? "/en/guides" : "/guides"}>{isEnglish ? "User guides" : "Hướng dẫn"}</a><a href={isEnglish ? "/en/blog" : "/blog"}>Blog</a><a href={isEnglish ? "/en/support" : "/support"}>{isEnglish ? "Support" : "Hỗ trợ"}</a></div>
+    <div><strong>{isEnglish ? "Legal" : "Thông tin"}</strong><a href={isEnglish ? "/en/privacy" : "/privacy"}>{isEnglish ? "Privacy policy" : "Quyền riêng tư"}</a><a href={isEnglish ? "/en/terms" : "/terms"}>{isEnglish ? "Terms of service" : "Điều khoản"}</a><a href={isEnglish ? "/en/delete-account" : "/delete-account"}>{isEnglish ? "Delete account" : "Xóa tài khoản"}</a><a href={`mailto:${legal.supportEmail}`}>{legal.supportEmail}</a></div>
   </div>
-  <div class="container footer-bottom">
-    <span>© {year} {legal.legalName} · {legal.brandName}. CongTrinhSnap.</span>
-    <span>Manage Projects. Capture Progress. Stay Organized.</span>
-  </div>
+  <div class="container footer-bottom"><span>© {year} {legal.legalName} · {legal.brandName}. CongTrinhSnap.</span><span>Manage Projects. Capture Progress. Stay Organized.</span></div>
 </footer>
