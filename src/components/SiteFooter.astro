@@ -1,4 +1,5 @@
 ---
+import { legal } from "../data/legal";
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
@@ -12,10 +13,10 @@ const year = new Date().getFullYear();
     </div>
     <div><strong>Sản phẩm</strong><a href="/features">Tính năng</a><a href="/pricing">Free & Pro</a><a href="/download">Tải ứng dụng</a></div>
     <div><strong>Tài nguyên</strong><a href="/guides">Hướng dẫn</a><a href="/blog">Blog</a><a href="/support">Hỗ trợ</a></div>
-    <div><strong>Thông tin</strong><a href="/privacy">Quyền riêng tư</a><a href="/terms">Điều khoản</a></div>
+    <div><strong>Thông tin</strong><a href="/privacy">Quyền riêng tư</a><a href="/terms">Điều khoản</a><a href="/delete-account">Xóa tài khoản</a><a href={`mailto:${legal.supportEmail}`}>{legal.supportEmail}</a></div>
   </div>
   <div class="container footer-bottom">
-    <span>© {year} CongTrinhSnap. All rights reserved.</span>
+    <span>© {year} {legal.legalName} · {legal.brandName}. CongTrinhSnap.</span>
     <span>Manage Projects. Capture Progress. Stay Organized.</span>
   </div>
 </footer>
