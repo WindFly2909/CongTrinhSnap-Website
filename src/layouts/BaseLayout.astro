@@ -1,25 +1,33 @@
 ---
 import "../styles/global.css";
-interface Props { title?: string; description?: string; image?: string; }
+interface Props { title?: string; description?: string; image?: string; lang?: "vi" | "en"; }
 const {
   title = "CongTrinhSnap – Quản lý công trình",
   description = "Quản lý ảnh, video, hồ sơ và tiến độ công trình dễ dàng trên điện thoại.",
-  image = "/images/og-default.svg"
+  image = "/images/og-default.svg",
+  lang = "vi"
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 const imageUrl = new URL(image, Astro.site).toString();
+const vietnamesePath = Astro.url.pathname.replace(/^\/en(?=\/|$)/, "") || "/";
+const englishPath = `/en${vietnamesePath === "/" ? "" : vietnamesePath}`;
+const viUrl = new URL(vietnamesePath, Astro.site).toString();
+const enUrl = new URL(englishPath, Astro.site).toString();
 ---
 <!doctype html>
-<html lang="vi">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0d6b55" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="vi" href={viUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={viUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:locale" content={lang === "en" ? "en_US" : "vi_VN"} />
     <meta property="og:site_name" content="CongTrinhSnap" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -30,7 +38,7 @@ const imageUrl = new URL(image, Astro.site).toString();
     <slot name="head" />
   </head>
   <body>
-    <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+    <a class="skip-link" href="#main">{lang === "en" ? "Skip to content" : "Bỏ qua điều hướng"}</a>
     <slot />
   </body>
 </html>
