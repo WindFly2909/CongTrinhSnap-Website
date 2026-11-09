@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import { legal } from "../data/legal";
+const subject = encodeURIComponent(`Yêu cầu xóa tài khoản ${legal.appName}`);
+const body = encodeURIComponent("Tôi yêu cầu xóa tài khoản và dữ liệu của tôi trong ứng dụng.\nEmail tài khoản: (ghi Gmail bạn dùng để đăng nhập)\nXóa cả dữ liệu do ứng dụng tạo trên Google Drive của tôi: Có / Không\n");
+---
+<BaseLayout title={`Xóa tài khoản và dữ liệu | ${legal.appName}`} description={`Cách yêu cầu xóa tài khoản và dữ liệu của ứng dụng ${legal.appName} do ${legal.developerName} phát hành.`}>
+<SiteHeader />
+<main id="main">
+<section class="page-hero"><div class="container"><span class="eyebrow">Tài khoản</span><h1>Xóa tài khoản và dữ liệu</h1><p>Ứng dụng <strong>{legal.appName}</strong> ({legal.packageName}) – nhà phát triển {legal.developerName}.</p></div></section>
+<article class="prose">
+
+<h2>Cách 1: Xóa ngay trong ứng dụng</h2>
+<ol>
+<li>Mở ứng dụng và đăng nhập bằng tài khoản Google cần xóa.</li>
+<li>Vào tab <strong>Tài khoản</strong>, kéo xuống cuối, chọn <strong>Xóa tài khoản</strong>.</li>
+<li>Đọc danh sách dữ liệu sẽ bị xóa, chọn có xóa cả dữ liệu trên Google Drive và trên máy hay không.</li>
+<li>Gõ chữ xác nhận, đăng nhập Google lại khi được hỏi, rồi chờ quá trình xóa hoàn tất.</li>
+</ol>
+<p>Việc xóa diễn ra ngay khi bạn xác nhận và không thể hoàn tác.</p>
+
+<h2>Cách 2: Gửi yêu cầu qua email (khi không còn ứng dụng)</h2>
+<p>Gửi email <strong>từ chính địa chỉ Gmail đã đăng nhập ứng dụng</strong> tới <a href={`mailto:${legal.supportEmail}?subject=${subject}&body=${body}`}>{legal.supportEmail}</a> với tiêu đề “Yêu cầu xóa tài khoản {legal.appName}”. Ghi rõ có muốn xóa cả dữ liệu do ứng dụng tạo trên Google Drive của bạn hay không. Nếu email gửi từ địa chỉ khác, chúng tôi sẽ đề nghị xác minh trước khi xóa.</p>
+<p>Chúng tôi xử lý và trả lời trong vòng <strong>{legal.deletionResponseDays} ngày</strong> kể từ khi nhận được yêu cầu hợp lệ.</p>
+
+<h2>Dữ liệu bị xóa</h2>
+<ul>
+<li>Tài khoản đăng nhập của bạn trong ứng dụng (Firebase Authentication).</li>
+<li>Công trình bạn là <strong>Chủ</strong> trên đám mây: thông tin, ghi chú, chú thích, danh sách thành viên, khóa mã hóa. Các công trình này cũng biến mất với mọi thành viên khác.</li>
+<li>Tư cách thành viên của bạn trong công trình của người khác (bạn được gỡ khỏi công trình).</li>
+<li>Lời mời bạn đã gửi và lời mời gửi tới bạn.</li>
+<li>Thông tin thiết bị, danh sách thiết bị dùng gói Pro, quyền Pro được cấp thủ công.</li>
+<li>Nếu bạn chọn: các tệp và thư mục do ứng dụng tạo trong Google Drive của bạn. Lưu ý: ảnh bạn đã tải lên công trình chia sẻ nằm trong Drive của bạn, xóa thì thành viên khác cũng mất các ảnh đó.</li>
+<li>Nếu bạn chọn (chỉ khi xóa trong ứng dụng): dữ liệu công trình trên điện thoại đang dùng.</li>
+</ul>
+
+<h2>Dữ liệu được giữ lại</h2>
+<ul>
+<li>Mã băm của giao dịch Google Play gắn với tài khoản cũ (không chứa email hay tên), giữ để chống gian lận thuê bao.</li>
+<li>Dữ liệu thanh toán do Google Play lưu theo chính sách của Google.</li>
+<li>Email trao đổi với bộ phận hỗ trợ, giữ đến khi yêu cầu và khiếu nại liên quan được giải quyết.</li>
+<li>Dữ liệu phải lưu theo yêu cầu của pháp luật, nếu có.</li>
+<li>Dữ liệu trên các điện thoại khác mà bạn chưa gỡ ứng dụng, và tệp bạn đã xuất (.zip, PDF) hoặc chia sẻ qua ứng dụng khác: chúng tôi không truy cập được, bạn tự xóa.</li>
+</ul>
+
+<h2>Gói Pro</h2>
+<p>Xóa tài khoản <strong>không tự hủy</strong> thuê bao Pro mua qua Google Play. Hãy hủy tại <a href={legal.playSubscriptionsUrl} rel="noopener">trang quản lý thuê bao của Google Play</a> trước hoặc sau khi xóa tài khoản để không bị gia hạn.</p>
+
+<h2>Chỉ muốn xóa một phần dữ liệu?</h2>
+<p>Trong ứng dụng, bạn có thể xóa từng ảnh, ghi chú, công trình, hoặc rời một công trình mà không cần xóa tài khoản. Bạn cũng có thể gửi email yêu cầu xóa một loại dữ liệu cụ thể. Xem thêm <a href="/privacy">Chính sách quyền riêng tư</a>.</p>
+</article>
+</main>
+<SiteFooter />
+</BaseLayout>
