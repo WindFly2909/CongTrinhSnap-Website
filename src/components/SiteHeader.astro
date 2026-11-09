@@ -3,6 +3,8 @@ const isEnglish = Astro.url.pathname === "/en" || Astro.url.pathname.startsWith(
 const links = isEnglish ? [
   { href: "/en", label: "Home" },
   { href: "/en/features", label: "Features" },
+  { href: "/en/guides", label: "Guides" },
+  { href: "/en/blog", label: "Blog" },
   { href: "/en/pricing", label: "Free & Pro" },
   { href: "/en/support", label: "Support" }
 ] : [
@@ -16,12 +18,12 @@ const links = isEnglish ? [
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 const viPath = path.replace(/^\/en(?=\/|$)/, "") || "/";
 const enPath = `/en${viPath === "/" ? "" : viPath}`;
-const viTarget = ["/", "/features", "/pricing", "/support", "/download", "/privacy", "/terms", "/delete-account"].includes(viPath) ? viPath : "/";
-const enTarget = ["/en", "/en/features", "/en/pricing", "/en/support", "/en/download", "/en/privacy", "/en/terms", "/en/delete-account"].includes(enPath) ? enPath : "/en";
+const viTarget = ["/", "/features", "/pricing", "/support", "/download", "/privacy", "/terms", "/delete-account", "/blog", "/guides"].includes(viPath) || viPath.startsWith("/blog/") || viPath.startsWith("/guides/") ? viPath : "/";
+const enTarget = ["/en", "/en/features", "/en/pricing", "/en/support", "/en/download", "/en/privacy", "/en/terms", "/en/delete-account", "/en/blog", "/en/guides"].includes(enPath) || enPath.startsWith("/en/blog/") || enPath.startsWith("/en/guides/") ? enPath : "/en";
 ---
 <header class="site-header">
   <div class="container nav-wrap">
-    <a class="brand" href={isEnglish ? "/en" : "/"} aria-label="CongTrinhSnap – {isEnglish ? 'Home' : 'Trang chủ'}">
+    <a class="brand" href={isEnglish ? "/en" : "/"} aria-label={`CongTrinhSnap – ${isEnglish ? "Home" : "Trang chủ"}`}>
       <img src="/favicon.svg" alt="" width="38" height="38" />
       <span>CongTrinh<span class="brand-accent">Snap</span></span>
     </a>
@@ -29,7 +31,7 @@ const enTarget = ["/en", "/en/features", "/en/pricing", "/en/support", "/en/down
       {links.map((link) => <a class:list={["nav-link", path === link.href ? "active" : ""]} href={link.href}>{link.label}</a>)}
     </nav>
     <div class="header-actions">
-      <div class="language-switch" aria-label="Language">
+      <div class="language-switch" aria-label={isEnglish ? "Choose language" : "Chọn ngôn ngữ"}>
         <a href={viTarget} lang="vi" aria-current={!isEnglish ? "page" : undefined}>VI</a>
         <span aria-hidden="true">|</span>
         <a href={enTarget} lang="en" aria-current={isEnglish ? "page" : undefined}>EN</a>
