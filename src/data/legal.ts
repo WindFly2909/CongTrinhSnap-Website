@@ -3,13 +3,12 @@ export const legal = {
   appName: "CongTrinhSnap – Quản lý công trình",
   appLauncherName: "Quản lý công trình",
   packageName: "com.constructionhub.app",
-  // Chủ thể pháp lý là cá nhân; DoS Studio chỉ là thương hiệu.
-  legalName: "LÊ ĐỨC TRỌNG",
+  legalName: "Lê Đức Trọng",
+  legalAddress: "Gia Lai, Việt Nam",
   brandName: "DoS Studio",
   developerDisplayName: "DoS Studio",
   supportEmail: "snapcongtrinh1990@gmail.com",
-  // Cập nhật thành ngày thực tế công bố khi merge PR nếu ngày công bố thay đổi.
-  effectiveDate: "09/11/2026",
+  effectiveDate: "10/11/2026",
   siteUrl: "https://congtrinhsnap.pages.dev",
   deletionInitialResponseWorkingDays: 2,
   deletionExecutionDays: 20,
