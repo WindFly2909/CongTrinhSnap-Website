@@ -3,56 +3,35 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import { legal } from "../data/legal";
-const subject = encodeURIComponent(`Yêu cầu xóa tài khoản ${legal.appName}`);
-const body = encodeURIComponent("Tôi yêu cầu xóa tài khoản và dữ liệu trong ứng dụng.\nEmail Google đăng nhập: \nTên hiển thị/tên tài khoản (nếu có): \nYêu cầu xóa dữ liệu trong Google Drive do ứng dụng tạo (chỉ thực hiện nếu có thể xác minh và tôi có quyền): Có / Không\n");
 ---
-<BaseLayout title={`Xóa tài khoản và dữ liệu | ${legal.appName}`} description={`Cách yêu cầu xóa tài khoản và dữ liệu của ${legal.appName}.`}>
-<SiteHeader />
-<main id="main">
-<section class="page-hero"><div class="container"><span class="eyebrow">Tài khoản</span><h1>Xóa tài khoản và dữ liệu</h1><p>Ứng dụng <strong>{legal.appName}</strong> ({legal.packageName}) – do <strong>{legal.legalName}</strong> vận hành dưới thương hiệu {legal.brandName}.</p></div></section>
+<BaseLayout title="Yêu cầu xóa tài khoản | Quản lý công trình" description="Hướng dẫn xóa tài khoản và dữ liệu của ứng dụng Quản lý công trình.">
+<SiteHeader /><main id="main">
+<section class="page-hero"><div class="container"><span class="eyebrow">Tài khoản</span><h1>Yêu cầu xóa tài khoản – Quản lý công trình</h1><p>Cập nhật lần cuối: {legal.effectiveDate}</p><p><a href="#vi">Tiếng Việt</a> · <a href="#en">English</a></p></div></section>
 <article class="prose">
-<p>Trang này áp dụng cho tài khoản CongTrinhSnap. Bạn có thể yêu cầu xóa trong ứng dụng hoặc gửi yêu cầu qua email mà không cần cài lại ứng dụng.</p>
-
-<h2>1. Xóa trong ứng dụng</h2>
-<ol>
-<li>Mở ứng dụng và đăng nhập bằng tài khoản Google cần xóa.</li>
-<li>Vào tab <strong>Tài khoản</strong>, kéo xuống cuối và chọn <strong>Xóa tài khoản</strong>.</li>
-<li>Đọc danh sách dữ liệu sẽ bị xóa; chọn xử lý dữ liệu Google Drive và dữ liệu cục bộ theo lựa chọn được hiển thị.</li>
-<li>Thực hiện bước xác nhận và xác thực được ứng dụng yêu cầu.</li>
-</ol>
-<p>Yêu cầu xóa được tiếp nhận khi bạn xác nhận. Một số thao tác xóa ở hệ thống của Google hoặc bên thứ ba có thể cần thời gian xử lý theo thời hạn nêu dưới đây. Việc xóa dữ liệu cục bộ chỉ tác động tới thiết bị đang thao tác; các thiết bị khác cần được xử lý riêng.</p>
-
-<h2>2. Yêu cầu xóa qua email</h2>
-<p>Gửi email từ địa chỉ Google gắn với tài khoản tới <a href={`mailto:${legal.supportEmail}?subject=${subject}&body=${body}`}><strong>{legal.supportEmail}</strong></a>, tiêu đề “Yêu cầu xóa tài khoản {legal.appName}”. Ghi email đăng nhập và phạm vi dữ liệu muốn xóa. Nếu bạn không còn truy cập được email cũ, hãy mô tả tình huống; chúng tôi sẽ hướng dẫn cách xác minh hợp lý. Không gửi mật khẩu, mã OTP hoặc thông tin thanh toán đầy đủ.</p>
-
-<h2>3. Thời hạn xử lý</h2>
-<p>Với yêu cầu xóa dữ liệu hợp lệ, chúng tôi phản hồi trong <strong>{legal.deletionInitialResponseWorkingDays} ngày làm việc</strong>, cung cấp thông tin về thủ tục và thực hiện trong <strong>{legal.deletionExecutionDays} ngày</strong>. Trường hợp cần phối hợp với bên xử lý dữ liệu hoặc bên thứ ba, thời hạn thực hiện là <strong>{legal.deletionThirdPartyDays} ngày</strong>. Nếu yêu cầu phức tạp và cần gia hạn, chúng tôi có thể gia hạn một lần tối đa <strong>{legal.deletionExtensionDays} ngày</strong>, đồng thời thông báo lý do và căn cứ gia hạn. Thời hạn được tính theo quy định tại Điều 5 Nghị định 356/2025/NĐ-CP và pháp luật liên quan. Một số trường hợp pháp luật cho phép tiếp tục lưu giữ dữ liệu.</p>
-
-<h2>4. Dữ liệu được xóa hoặc xử lý</h2>
-<ul>
-<li>Tài khoản xác thực Firebase và dữ liệu hồ sơ gắn với tài khoản, trong phạm vi hệ thống CongTrinhSnap kiểm soát.</li>
-<li>Dữ liệu công trình đám mây do bạn sở hữu, gồm thông tin, ghi chú, chú thích, danh sách thành viên và khóa mã hóa, theo cơ chế xóa của ứng dụng. Việc xóa công trình của Chủ có thể làm các thành viên khác không còn truy cập được công trình.</li>
-<li>Tư cách thành viên của bạn trong công trình do người khác sở hữu; lời mời bạn gửi hoặc nhận, trong phạm vi ứng dụng quản lý.</li>
-<li>Thông tin thiết bị và quyền Pro gắn với tài khoản, trừ dữ liệu tối thiểu cần lưu giữ hợp pháp để xác minh giao dịch hoặc phòng chống gian lận.</li>
-<li>Tệp và thư mục do ứng dụng tạo trong Google Drive của bạn chỉ được xóa khi bạn chọn chức năng tương ứng trong ứng dụng, ứng dụng còn quyền truy cập và thao tác được hỗ trợ. Nếu không, bạn cần tự xóa trong Google Drive. Lưu ý: xóa tệp bạn tải lên công trình chia sẻ có thể khiến thành viên khác mất quyền xem tệp đó.</li>
-<li>Dữ liệu công trình lưu cục bộ trên thiết bị đang dùng chỉ được xóa nếu bạn chọn thao tác đó trong ứng dụng. Dữ liệu trên thiết bị khác, tệp đã xuất (.zip, PDF) hoặc dữ liệu bạn đã chia sẻ sang ứng dụng khác không nằm trong khả năng xóa từ xa của chúng tôi.</li>
-</ul>
-
-<h2>5. Dữ liệu có thể được giữ lại</h2>
-<ul>
-<li>Mã giao dịch đã băm và thông tin tối thiểu liên quan có thể được giữ trong thời gian cần thiết để xác minh giao dịch, chống gian lận hoặc giải quyết tranh chấp; chúng tôi rà soát và xóa/khử liên kết khi không còn cần thiết, trừ trường hợp pháp luật yêu cầu lưu.</li>
-<li>Hồ sơ thanh toán do Google Play lưu theo chính sách và nghĩa vụ riêng của Google.</li>
-<li>Email hỗ trợ được giữ trong thời gian cần thiết để giải quyết yêu cầu, khiếu nại và nghĩa vụ pháp lý.</li>
-<li>Dữ liệu phải tiếp tục lưu theo yêu cầu pháp luật hoặc thuộc trường hợp không được xóa theo quy định có thể được giữ trong phạm vi và thời hạn bắt buộc.</li>
-</ul>
-<p>Nếu không thể xóa một phần dữ liệu vì lý do chính đáng hoặc do giới hạn kỹ thuật/quyền truy cập của nhà cung cấp, chúng tôi sẽ thông báo cho bạn và hướng dẫn bước tiếp theo trong phạm vi có thể.</p>
-
-<h2>6. Gói Pro</h2>
-<p>Xóa tài khoản CongTrinhSnap <strong>không tự động hủy</strong> thuê bao Google Play. Để tránh gia hạn, hãy quản lý hoặc hủy thuê bao tại <a href={legal.playSubscriptionsUrl} rel="noopener noreferrer">trang quản lý thuê bao Google Play</a>. Việc hủy và hoàn tiền tuân theo quy định của Google Play.</p>
-
-<h2>7. Chỉ muốn xóa một phần dữ liệu?</h2>
-<p>Bạn có thể xóa từng ảnh, ghi chú hoặc công trình, hoặc rời công trình mà không xóa tài khoản nếu ứng dụng hỗ trợ thao tác đó. Với yêu cầu khác, gửi email tới địa chỉ hỗ trợ ở trên. Xem thêm <a href="/privacy">Chính sách quyền riêng tư</a>.</p>
-</article>
-</main>
-<SiteFooter />
+<section id="vi" lang="vi">
+<h1>Yêu cầu xóa tài khoản – Quản lý công trình</h1><p><small>Cập nhật lần cuối: {legal.effectiveDate}</small></p>
+<p>Trang này dành cho người dùng ứng dụng <strong>Quản lý công trình</strong> (tên trên Google Play; tiếng Anh: Construction Manager, gói <code>com.constructionhub.app</code>) của <strong>{legal.brandName}</strong>, do <strong>{legal.legalName}</strong> phát hành, muốn xóa tài khoản và dữ liệu đã lưu trên máy chủ.</p>
+<h2>Cách 1: xóa ngay trong ứng dụng (nhanh nhất)</h2>
+<ol><li>Mở ứng dụng, đăng nhập bằng tài khoản Google cần xóa.</li><li>Vào tab <strong>Tài khoản</strong>, kéo xuống cuối trang, chọn <strong>Xóa tài khoản</strong>.</li><li>Đọc danh sách dữ liệu sẽ bị xóa và được giữ lại. Chọn thêm (nếu muốn): xóa dữ liệu do ứng dụng tạo trên Google Drive, xóa dữ liệu công trình trên máy.</li><li>Gõ chữ xác nhận, bấm <strong>Xóa tài khoản của tôi</strong>, rồi đăng nhập Google lại để xác nhận.</li><li>Ứng dụng xóa theo từng bước. Nếu mất mạng, bấm <strong>Thử lại</strong> để chạy tiếp.</li></ol>
+<h2>Cách 2: yêu cầu bằng email khi không còn ứng dụng</h2>
+<p>Gửi email từ <strong>chính địa chỉ Gmail đã dùng để đăng nhập</strong> tới <a href={"mailto:" + legal.supportEmail}>{legal.supportEmail}</a>, tiêu đề: <code>Yeu cau xoa tai khoan - Quan ly cong trinh</code>. Chúng tôi sẽ xác minh người gửi bằng chính địa chỉ email đó. Không cần gửi mật khẩu hay giấy tờ.</p>
+<h2>Dữ liệu bị xóa</h2><ul><li>Tài khoản đăng nhập.</li><li>Các công trình bạn là chủ, cùng ảnh, video, bản vẽ, ghi chú, danh sách thành viên và khóa mã hóa. Công trình có thành viên khác sẽ bị xóa với mọi người.</li><li>Lời mời bạn đã gửi hoặc nhận; tư cách thành viên trong công trình của người khác.</li><li>Danh sách thiết bị, chỗ thiết bị Pro, bản cấp Pro theo Gmail và hồ sơ trên máy chủ.</li><li>Tùy chọn trong ứng dụng: dữ liệu do ứng dụng tạo trên Google Drive của bạn, và dữ liệu công trình trên máy.</li></ul>
+<h2>Dữ liệu được giữ lại</h2><ul><li>Một bản ghi gắn giao dịch Google Play với tài khoản (chỉ gồm mã tài khoản và thời điểm), để chống dùng lại thuê bao gian lận.</li><li>Dữ liệu thanh toán do Google Play lưu theo chính sách của Google. Gói Pro mua qua Google Play <strong>không tự hủy</strong> khi xóa tài khoản: hãy hủy trong Google Play &gt; Thanh toán và gói thuê bao.</li></ul>
+<h2>Thời hạn xử lý</h2><p>Xóa trong ứng dụng có hiệu lực ngay khi hoàn tất. Yêu cầu qua email được xử lý trong vòng 30 ngày kể từ khi chúng tôi xác minh được người gửi.</p>
+<p><strong>Liên hệ:</strong> {legal.legalName} – {legal.brandName}<br />Địa chỉ: {legal.legalAddress}<br />Email: <a href={"mailto:" + legal.supportEmail}>{legal.supportEmail}</a></p>
+<p>Xem thêm <a href="/app-privacy">Chính sách quyền riêng tư của ứng dụng</a>.</p>
+</section><hr />
+<section id="en" lang="en">
+<h1>Delete account request – Construction Manager</h1><p><small>Last updated: {legal.effectiveDate}</small></p>
+<p>This page is for users of the <strong>Construction Manager</strong> app (Vietnamese name: Quản lý công trình, package <code>com.constructionhub.app</code>) by <strong>{legal.brandName}</strong>, published by <strong>{legal.legalName}</strong>, who want to delete their account and the data stored on our servers.</p>
+<h2>Option 1: delete inside the app (fastest)</h2><ol><li>Open the app and sign in with the Google account you want to delete.</li><li>Go to the <strong>Account</strong> tab, scroll to the bottom and choose <strong>Delete account</strong>.</li><li>Read what will be deleted and what is kept. Optionally also delete the data the app created in your Google Drive and the project data on this device.</li><li>Type the confirmation word, tap <strong>Delete my account</strong>, then sign in with Google again to confirm.</li><li>The app deletes step by step. If the connection drops, tap <strong>Retry</strong> to continue.</li></ol>
+<h2>Option 2: request by email if you no longer have the app</h2><p>Send an email from <strong>the same Gmail address you signed in with</strong> to <a href={"mailto:" + legal.supportEmail}>{legal.supportEmail}</a>, subject: <code>Yeu cau xoa tai khoan - Quan ly cong trinh</code>. We verify the sender by that very address. Do not send passwords or ID documents.</p>
+<h2>Data that is deleted</h2><ul><li>Your sign-in account.</li><li>Projects you own with their photos, videos, drawings, notes, member list and encryption keys. Projects with other members are deleted for everyone.</li><li>Invitations you sent or received; your membership in other people's projects.</li><li>Your device list, Pro device seat, Pro grant and profile on our servers.</li><li>Optional in the app: data the app created in your Google Drive, and project data on your device.</li></ul>
+<h2>Data that is kept</h2><ul><li>A record linking a Google Play purchase to your account (only an account id and a time), to prevent fraudulent re-use of a subscription.</li><li>Payment data is held by Google Play under Google's policy. A Pro subscription bought on Google Play is <strong>not cancelled</strong> when you delete your account: cancel it in Google Play &gt; Payments &amp; subscriptions.</li></ul>
+<h2>Processing time</h2><p>Deleting inside the app takes effect as soon as it finishes. Email requests are processed within 30 days after we verify the sender.</p>
+<p><strong>Contact:</strong> {legal.legalName} – {legal.brandName}<br />Address: {legal.legalAddress}<br />Email: <a href={"mailto:" + legal.supportEmail}>{legal.supportEmail}</a></p>
+<p>See also the <a href="/app-privacy">App Privacy Policy</a>.</p>
+<p><strong>Language notice:</strong> This English translation is provided for convenience. If there is any inconsistency, the Vietnamese version prevails for interpretation in Vietnam.</p>
+</section>
+</article></main><SiteFooter />
 </BaseLayout>

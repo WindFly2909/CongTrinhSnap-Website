@@ -10,7 +10,7 @@ const {
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 const imageUrl = new URL(image, Astro.site).toString();
 const vietnamesePath = Astro.url.pathname.replace(/^\/en(?=\/|$)/, "") || "/";
-const englishPath = `/en${vietnamesePath === "/" ? "" : vietnamesePath}`;
+const englishPath = "/en" + (vietnamesePath === "/" ? "" : vietnamesePath);
 const viUrl = new URL(vietnamesePath, Astro.site).toString();
 const enUrl = new URL(englishPath, Astro.site).toString();
 const hasEnglishVersion = ["/", "/features", "/pricing", "/support", "/download", "/privacy", "/terms", "/delete-account", "/blog", "/guides"].includes(vietnamesePath);
